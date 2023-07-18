@@ -7,26 +7,20 @@ public class Enemy : MonoBehaviour
     [SerializeField] private AudioClip destroySound;
     [SerializeField] private int amount;
     [SerializeField] private Score points;
+    [SerializeField] private Collider enemyCollider;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        enemyCollider = GetComponentInChildren<Collider>();
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Shoot")
+        if (other.CompareTag("Shoot"))
         {
             points.AddPoints(amount);
             SoundsControl.Instance.Playsound(destroySound);
-            Destroy(gameObject);
             Destroy(other.gameObject);
+            Destroy(gameObject);
         }
     }
 }

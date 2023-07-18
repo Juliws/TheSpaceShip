@@ -7,8 +7,8 @@ public class SpawnManager : MonoBehaviour
     public GameObject[] objects;
     private float spawnRangeX = 42;
     private float spawnPosZ = 33;
-    private float startDelay = 2;
-    private float spawnInterval = 2.0f;
+    private float startDelay = 1.5f;
+    private float spawnInterval = 1.0f;
     public float sideSpawnMinZ = 2.0f;
     public float sideSpawnMaxZ = 14.0f;
     public float sideSpawnX = 20f;
@@ -16,14 +16,14 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         //Random creation of animals
-        InvokeRepeating("SpawnRandomAnimals", startDelay, spawnInterval);
+        InvokeRepeating("SpawnRandomObjects", startDelay, spawnInterval);
     }
 
     void Update()
     {
 
     }
-    void SpawnRandomAnimals()
+    void SpawnRandomObjects()
     {
         // X Randomly generate animal index and spawn position
         int objectsIndex = Random.Range(0, objects.Length);
