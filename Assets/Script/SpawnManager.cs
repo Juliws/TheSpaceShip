@@ -5,13 +5,13 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject[] objects;
-    private float spawnRangeX = 42;
-    private float spawnPosZ = 33;
+    private float spawnRangeX = 70;
+    private float spawnPosZ = 54.4f;
     private float startDelay = 1.5f;
     private float spawnInterval = 1.0f;
     public float sideSpawnMinZ = 2.0f;
     public float sideSpawnMaxZ = 14.0f;
-    public float sideSpawnX = 20f;
+    public float sideSpawnX = 54.4f;
 
     void Start()
     {

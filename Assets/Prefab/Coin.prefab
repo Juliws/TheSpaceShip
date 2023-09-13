@@ -1457,6 +1457,7 @@ MonoBehaviour:
   pointSound: {fileID: 8300000, guid: e9b08310be757dd458ddeb59b7a67860, type: 3}
   amountPoints: 5
   point: {fileID: 0}
+  boom: {fileID: 0}
 --- !u!114 &8311286015451308894
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -23,9 +23,8 @@ public class EnemyShipFollow : MonoBehaviour
         private void ShootTime()
         {
             tiempo = tiempo + Time.deltaTime;
-            if(tiempo > 0.8f)
+            if(tiempo > 1f)
             {
-            Debug.Log("Fire");
             Instantiate(bullet.transform, spawn.transform.position, Quaternion.identity);
             tiempo = 0;
             }

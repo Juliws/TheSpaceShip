@@ -7,13 +7,21 @@ public class MoverPersonaje : MonoBehaviour
     [SerializeField] private float velocidad;
     [SerializeField] private Vector3 direccion;
     [SerializeField] private GameObject shoot;
-    [SerializeField] private float xRange=41.0f,zRange=26.0f;
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] private float moveForce;
+    [SerializeField] private float xRange = 74.0f, zRange = 38.0f;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     void Update()
     {
         MovePlayer();
         PresionarBotones();
         Fire();
+        //limits();
     }
 
     public void MovePlayer()
@@ -23,27 +31,40 @@ public class MoverPersonaje : MonoBehaviour
 
     public void PresionarBotones()
     {
-        direccion = Vector2.zero;
+        Vector3 direccionX = Input.GetAxis("Horizontal") * Vector3.right;
+        Vector3 direccionZ = Input.GetAxis("Vertical") * Vector3.forward;
 
-        if (Input.GetKey(KeyCode.UpArrow))
+        Vector3 direccion = direccionX + direccionZ;
+        Vector3 vectorSpeed = direccion * velocidad;
+
+        rb.velocity = vectorSpeed;
+
+        /*direccion = Vector2.zero;
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            direccion += Vector3.forward;
+            rb.AddForce(Vector3.forward * moveForce, ForceMode.Impulse);
+            //direccion += Vector3.forward;
         }
 
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            direccion += Vector3.back;
+            rb.AddForce(Vector3.back * moveForce, ForceMode.Impulse);
+            //direccion += Vector3.back;
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            direccion += Vector3.left;
+            rb.AddForce(Vector3.left * moveForce, ForceMode.Impulse);
+            //direccion += Vector3.left;
         }
 
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            direccion += Vector3.right;
-        }
+            rb.AddForce(Vector3.right * moveForce, ForceMode.Impulse);
+            //direccion += Vector3.right;
+        }*/
+
     }
 
     public void Fire()

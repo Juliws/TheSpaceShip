@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int amount;
     [SerializeField] private Score points;
     [SerializeField] private Collider enemyCollider;
+    [SerializeField] private ParticleSystem boom;
 
     private void Start()
     {
@@ -19,6 +20,7 @@ public class Enemy : MonoBehaviour
         {
             points.AddPoints(amount);
             SoundsControl.Instance.Playsound(destroySound);
+            Instantiate(boom, transform.position, Quaternion.identity);
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
